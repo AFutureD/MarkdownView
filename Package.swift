@@ -13,11 +13,17 @@ let package = Package(
             targets: ["MarkdownView"]
         ),
     ],
+    dependencies: [
+        .package(url: "https://github.com/swiftlang/swift-markdown", from: "0.7.3"),
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "MarkdownView"
+            name: "MarkdownView",
+            dependencies: [
+                .product(name: "Markdown", package: "swift-markdown"),
+            ]
         ),
         .testTarget(
             name: "MarkdownViewTests",
